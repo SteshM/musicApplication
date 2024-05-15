@@ -39,4 +39,14 @@ public class UserService {
         List<UserEntity>userEntityList=userRepo.findAll();
         return Utilities.createSuccessfulResponse("successfully fetched all users",userEntityList);
     }
+
+    public ResponseDTO fetchUserById(int userId) {
+    List<UserEntity>userEntityList = userRepo.findByUserId(userId);
+    return Utilities.createSuccessfulResponse("successfully fetched a user by Id",userEntityList);
+
+    }
+
+    public ResponseDTO updateUserById(UserDTO userDTO, int id) {
+
+    }
 }

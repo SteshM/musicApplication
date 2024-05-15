@@ -25,4 +25,13 @@ UserService userService;
     public ResponseDTO fetchUsers(){
     return userService.fetchUsers();
 }
+@GetMapping("/user/{id}")
+    public ResponseDTO fetchUserById(@PathVariable int id){
+    return userService.fetchUserById(id);
+}
+@PutMapping("/User/{id}")
+    public ResponseDTO updateUser(@RequestBody UserDTO userDTO , @PathVariable int id){
+    return userService.updateUserById(userDTO,id);
+
+}
 }
