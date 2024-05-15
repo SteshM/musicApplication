@@ -14,4 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SongController {
     @Autowired
     SongService songService;
+
+    @PostMapping("/song")
+    public ResponseDTO addSong(@RequestBody SongDTO songDTO){
+        return songService.addSong(songDTO);
+    }
 }

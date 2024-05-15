@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@AllArgsConstructor
 @Table(name = "songs")
 public class SongEntity {
     @Id
