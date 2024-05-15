@@ -1,4 +1,35 @@
 package com.example.myMusicApp.services;
 
+import com.example.myMusicApp.DTOs.ResponseDTO;
+import com.example.myMusicApp.DTOs.UserDTO;
+import com.example.myMusicApp.entities.UserEntity;
+import com.example.myMusicApp.enums.UserType;
+import com.example.myMusicApp.repositories.UserRepository;
+import com.example.myMusicApp.utilities.Utilities;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Data
+@RequiredArgsConstructor
+@Service
 public class UserService {
+    @Autowired
+    UserRepository userRepo;
+
+    public ResponseDTO createUser(UserDTO userDTO) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setName(userDTO.getName());
+        userEntity.setEmail(userDTO.getEmail());
+        try{
+            userEntity.setUserType(UserType.valueOf(userDTO.getUserType()));
+        }catch(Exception e){
+            return Utilities.createFailedResponse(401,"Bad user type");
+        }
+        userRepo.save(userEntity);
+        return Utilities.createSuccessfulResponse("Successfully created user",userEntity);
+    }
 }

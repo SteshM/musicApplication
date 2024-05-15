@@ -1,5 +1,6 @@
 package com.example.myMusicApp.entities;
 
+import com.example.myMusicApp.enums.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +17,5 @@ public class UserEntity {
     private int userId;
     private String name;
     private String email;
+    private UserType userType;
 }
