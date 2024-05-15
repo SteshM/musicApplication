@@ -47,6 +47,8 @@ public class UserService {
     }
 
     public ResponseDTO updateUserById(UserDTO userDTO, int id) {
+        userRepo.findByUserId(id);
+        return Utilities.createSuccessfulResponse("successfully updated a user by their Id",userDTO);
 
     }
 }
