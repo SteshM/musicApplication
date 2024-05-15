@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Data
 @RequiredArgsConstructor
@@ -31,5 +33,10 @@ public class UserService {
         }
         userRepo.save(userEntity);
         return Utilities.createSuccessfulResponse("Successfully created user",userEntity);
+    }
+
+    public ResponseDTO fetchUsers() {
+        List<UserEntity>userEntityList=userRepo.findAll();
+        return Utilities.createSuccessfulResponse("successfully fetched all users",userEntityList);
     }
 }
