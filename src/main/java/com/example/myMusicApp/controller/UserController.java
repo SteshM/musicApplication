@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequiredArgsConstructor
-@NoArgsConstructor
 @RequestMapping("/v1")
 public class UserController {
 
