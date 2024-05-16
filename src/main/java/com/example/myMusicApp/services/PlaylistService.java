@@ -36,8 +36,9 @@ public class PlaylistService {
         PlaylistEntity playlist = playlistRepo.findByPlaylistId(id);
         ModelMapper modelMapper = new ModelMapper();
         PlaylistEntity playlist1 = modelMapper.map(playlistDTO, PlaylistEntity.class);
+        playlist1.setPlaylistId(playlist.getPlaylistId());
         playlistRepo.save(playlist1);
-        return Utilities.createSuccessfulResponse("Updated playlist",playlist);
+        return Utilities.createSuccessfulResponse("Updated playlist",playlist1);
 
     }
 }
