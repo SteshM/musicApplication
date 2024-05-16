@@ -8,7 +8,10 @@ import com.example.myMusicApp.utilities.Utilities;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Data
@@ -21,6 +24,20 @@ public class PlaylistService {
         PlaylistEntity playlist = modelMapper.map(playlistDTO,PlaylistEntity.class);
         playlistRepo.save(playlist);
         return Utilities.createSuccessfulResponse("Successfully created a playlist",playlist);
+
+    }
+
+    public ResponseDTO fetchAll() {
+        List<PlaylistEntity>playlistEntityList = playlistRepo.findAll();
+        return Utilities.createSuccessfulResponse("Fetched all playlists",playlistEntityList);
+    }
+
+    public ResponseDTO updatePlaylist(PlaylistDTO playlistDTO, int id) {
+        PlaylistEntity playlist = playlistRepo.findByPlaylistId(id);
+        ModelMapper modelMapper = new ModelMapper();
+        PlaylistEntity playlist1 = modelMapper.map(playlistDTO, PlaylistEntity.class);
+        playlistRepo.save(playlist1);
+        return Utilities.createSuccessfulResponse("Updated playlist",playlist);
 
     }
 }

@@ -9,6 +9,7 @@ import lombok.Data;
 public class PlaylistEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "playlistId")
     private int playlistId;
     private String playlistName;
 }

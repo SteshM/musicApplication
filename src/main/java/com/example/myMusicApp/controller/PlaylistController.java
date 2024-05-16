@@ -6,10 +6,8 @@ import com.example.myMusicApp.services.PlaylistService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.coyote.Response;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +20,14 @@ public class PlaylistController {
     @PostMapping("/playlist")
     public ResponseDTO createPlaylist(@RequestBody PlaylistDTO playlistDTO){
         return playlistService.createPlaylist(playlistDTO);
+    }
+    @GetMapping("/playlists")
+    public ResponseDTO fetchPlaylists(){
+        return playlistService.fetchAll();
+    }
+    @PutMapping("/playlist/{id}")
+    public ResponseDTO updatePlaylist(@RequestBody PlaylistDTO playlistDTO,@PathVariable int id){
+        return playlistService.updatePlaylist(playlistDTO,id);
     }
 
 }
