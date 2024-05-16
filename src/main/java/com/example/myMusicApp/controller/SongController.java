@@ -13,7 +13,7 @@ public class SongController {
     SongService songService;
 
     @PostMapping("/{userId}/song")
-    public ResponseDTO addSong(@RequestBody SongDTO songDTO, @PathVariable int id){
-        return songService.addSong(songDTO,id);
+    public ResponseDTO addSong(@RequestBody SongDTO songDTO, @PathVariable int userId){
+        return songService.addSong(songDTO,userId);
     }
 }

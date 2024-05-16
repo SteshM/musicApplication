@@ -72,7 +72,9 @@ public class UserService {
     }
 
     public ResponseDTO deleteUserById(int id) {
+
         userRepo.deleteById(id);
         return Utilities.createSuccessfulResponse("Successfully deleted a user", id);
     }
+
 }

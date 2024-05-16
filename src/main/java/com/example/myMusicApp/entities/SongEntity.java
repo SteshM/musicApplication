@@ -15,7 +15,7 @@ public class SongEntity {
     private String genre;
     private int releaseYear;
     private int duration;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "userId")
     private UserEntity userEntity;
 

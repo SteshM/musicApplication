@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class SongService {
-    SongRepository songRepo;
-    UserRepository userRepository;
+   private final SongRepository songRepo;
+    private final UserRepository userRepository;
 
-    public ResponseDTO addSong(SongDTO songDTO,int id) {
-        var userEntity = userRepository.findByUserId(id);
-        if(userEntity.getUserType().name().equals("Artist")){
+    public ResponseDTO addSong(SongDTO songDTO,int userId) {
+        var userEntity = userRepository.findByUserId(userId);
+        if(userEntity.getUserType().toString().equals("Artist")){
             var songEntity = new SongEntity();
             songEntity.setTitle(songDTO.getTitle());
             songEntity.setGenre(songDTO.getGenre());
@@ -36,4 +36,5 @@ public class SongService {
 
 
     }
+    
 }
