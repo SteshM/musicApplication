@@ -1,4 +1,7 @@
 package com.example.myMusicApp.repositories;
 
-public class PlaylistRepo {
+import com.example.myMusicApp.entities.PlaylistEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PlaylistRepo extends JpaRepository<PlaylistEntity , Integer> {
 }
