@@ -53,8 +53,12 @@ public class UserService {
 
     public ResponseDTO fetchUserById(int userId) {
         UserEntity userEntity = userRepo.findByUserId(userId);
-        return Utilities.createSuccessfulResponse("successfully fetched a user by Id", userEntity);
-
+        if(userEntity.getUserType().toString().equals("Artist")){
+            return Utilities.createSuccessfulResponse("successfully fetched a user by Id", userEntity);
+        }
+        else {
+            return Utilities.createFailedResponse(404, "Not found");
+        }
     }
 
     public ResponseDTO updateUserById(UserDTO userDTO, int id) {
