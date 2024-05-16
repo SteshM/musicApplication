@@ -41,4 +41,9 @@ public class PlaylistService {
         return Utilities.createSuccessfulResponse("Updated playlist",playlist1);
 
     }
+
+    public ResponseDTO deletePlaylist(int id) {
+        playlistRepo.deleteById(id);
+        return Utilities.createSuccessfulResponse("Deleted playlist",id);
+    }
 }

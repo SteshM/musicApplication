@@ -30,4 +30,9 @@ public class PlaylistController {
         return playlistService.updatePlaylist(playlistDTO,id);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseDTO deletePlaylist(@PathVariable int id){
+        return playlistService.deletePlaylist(id);
+    }
+
 }
