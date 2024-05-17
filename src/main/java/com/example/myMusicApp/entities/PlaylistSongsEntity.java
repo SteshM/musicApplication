@@ -7,14 +7,10 @@ import lombok.Data;
 @Entity
 @Table(name = "playlistSongs")
 
-public class PlayListSongsEntity {
+public class PlaylistSongsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int playlistSongsId;
-
-    @JoinColumn(name = "songsId")
     private int songId;
-
-    @JoinColumn(name = "playlist_id")
     private int playlist_id;
 }
