@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Data
 @RequiredArgsConstructor
 @Service
@@ -34,6 +36,18 @@ public class SongService {
 
         }
 
+
+    }
+
+    public ResponseDTO getSongsByUserId(int user_id){
+        var userEntity = userRepository.findByUserId(user_id);
+        if(userEntity.getUserType().toString().equals("Artist")){
+            List<SongEntity> songs = songRepo.findByUserId(user_id);
+            return Utilities.createSuccessfulResponse("success", songs);
+
+        }else {
+            return Utilities.createFailedResponse(401,"forbidden");
+        }
 
     }
     
